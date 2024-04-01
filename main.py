@@ -1,5 +1,6 @@
-from zipfile import ZIP_DEFLATED, ZipFile
 import os
+from sys import argv
+from zipfile import ZIP_DEFLATED, ZipFile
 
 
 def recursive_files_list(dir):
@@ -63,5 +64,9 @@ def minimize_xml(text: bytes):
 
 
 if __name__ == '__main__':
-    xlsx_to_folder('example.xlsx')
-    folder_to_xlsx('example')
+    # xlsx_to_folder('example.xlsx')    Convert file to folder of xml files
+    # folder_to_xlsx('example')         Convert folder of xlm files to xlsx file
+    if argv[1].endswith('.xlsx'):
+        xlsx_to_folder(argv[1])
+    else:
+        folder_to_xlsx(argv[1])
